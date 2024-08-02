@@ -1,8 +1,22 @@
 <template>
   <div>
-    <q-btn label="-" color="primary" size="xs" @click="() => crement(-1)" />
-    <q-chip>{{ val }}</q-chip>
-    <q-btn label="+" color="primary" size="xs" @click="() => crement(1)" />
+    <q-btn
+      :label="`- ${delta}`"
+      color="primary"
+      size="md"
+      @click="() => crement(-1)"
+    />
+
+    <q-chip>
+      <slot></slot>
+      {{ val }}
+    </q-chip>
+    <q-btn
+      :label="`+ ${delta}`"
+      color="primary"
+      size="md"
+      @click="() => crement(1)"
+    />
   </div>
 </template>
 

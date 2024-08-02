@@ -4,7 +4,9 @@
       @crement="(delta:number)=>shiftTempo(delta)"
       :val="tempo"
       :delta="5"
-    />
+    >
+      Tempo
+    </val-crement>
   </q-page>
 </template>
 
