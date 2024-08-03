@@ -2,26 +2,26 @@ import { defineStore } from 'pinia';
 
 export const useSessionBeadsStore = defineStore('beads', {
   state: () => ({
-    bracelets: [] as Array<Array<string>>,
+    cords: [] as Array<Array<string>>,
   }),
 
   getters: {
     bracelets(state) {
-      state.bracelets;
+      state.cords;
     },
 
-    braceletFromCurrent: (state) => {
+    cordFromCurrent: (state) => {
       return (i: number) => {
-        const bracelets = state.bracelets;
-        const index = bracelets.length - 1 + i;
-        return bracelets[index];
+        const cords = state.cords;
+        const index = cords.length - 1 + i;
+        return cords[index];
       };
     },
   },
 
   actions: {
     newBracelet() {
-      this.bracelets.push([] as Array<string>);
+      this.cords.push([] as Array<string>);
     },
   },
 });
