@@ -2,14 +2,14 @@ import { defineStore } from 'pinia';
 
 export const useConfigurationStore = defineStore('configuration', {
   state: () => ({
-    beads: 3,
+    beadCount: 3,
     tempo: 90,
     nBack: 1,
   }),
 
   getters: {
     getBeads(state) {
-      return state.beads;
+      return state.beadCount;
     },
 
     getTempo(state) {
@@ -23,7 +23,7 @@ export const useConfigurationStore = defineStore('configuration', {
 
   actions: {
     crementBeads(delta: number) {
-      this.beads += delta;
+      this.beadCount += delta;
     },
 
     crementnBack(delta: number) {
