@@ -23,7 +23,7 @@ export const useSessionBeadsStore = defineStore('beads', {
   },
 
   actions: {
-    initialCords() {
+    initialCords(): number {
       const { nBack, beadCount } = storeToRefs(useConfigurationStore());
       const beadPool = ['a', 'b', 'c'];
 
@@ -36,6 +36,8 @@ export const useSessionBeadsStore = defineStore('beads', {
         this.cords.push(pendingCord);
         this.matchesCounts.push(0);
       }
+
+      return nBack.value;
     },
 
     subsequentCord() {
@@ -63,6 +65,15 @@ export const useSessionBeadsStore = defineStore('beads', {
 
       this.cords.push(currentCord);
       this.matchesCounts.push(matchesCount);
+    },
+
+    makeSessionCords(cordCount: number) {
+      const initialCords = this.initialCords();
+      for (let i = 0; i < cordCount - initialCords; i++) {
+        this.subsequentCord();
+      }
+
+      console.log(this.allCords);
     },
   },
 });
