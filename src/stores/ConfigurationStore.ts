@@ -5,6 +5,8 @@ export const useConfigurationStore = defineStore('configuration', {
     beadCount: 3,
     tempo: 90,
     nBack: 1,
+    time: 180,
+    interval: 8,
   }),
 
   getters: {
@@ -19,6 +21,14 @@ export const useConfigurationStore = defineStore('configuration', {
     getNBack(state) {
       return state.nBack;
     },
+
+    getTime(state) {
+      return state.time;
+    },
+
+    getInterval(state) {
+      return state.interval;
+    },
   },
 
   actions: {
@@ -32,6 +42,14 @@ export const useConfigurationStore = defineStore('configuration', {
 
     shiftTempo(delta: number) {
       this.tempo += delta;
+    },
+
+    crementTime(delta: number) {
+      this.time += delta;
+    },
+
+    shiftInterval(sign: number) {
+      this.interval += sign * 4;
     },
   },
 });
