@@ -1,6 +1,5 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useConfigurationStore } from './ConfigurationStore';
-import { useParameterBeadStore } from './ParameterBeadStore';
 import { randomFrom } from 'src/utils';
 
 export const useSessionBeadsStore = defineStore('beads', {
@@ -29,9 +28,13 @@ export const useSessionBeadsStore = defineStore('beads', {
       const beadPool = ['a', 'b', 'c'];
 
       for (let i = 0; i < nBack.value; i++) {
-        const cord = new Array<string>();
-        for (let j = 0; j < beadCount.value; j++)
-          cord.push(randomFrom(beadPool) as string);
+        const pendingCord = new Array<string>();
+        for (let j = 0; j < beadCount.value; j++) {
+          pendingCord.push(randomFrom(beadPool) as string);
+        }
+
+        this.cords.push(pendingCord);
+        this.matchesCounts.push(0);
       }
     },
 
@@ -43,8 +46,7 @@ export const useSessionBeadsStore = defineStore('beads', {
       const matchesIndices = [] as number[];
 
       const matchesCount = randomUpTo(2);
-      const pendingCord = new Array(5).fill('');
-      const prevCord = this.cordFromCurrent(nBack.value);
+      const pendingCord = new Array<string>(beadCount.value).fill('');
 
       for (let i = 0; i < matchesCount; i++) {
         const indexPending = randomUpTo(beadCount.value);
@@ -52,12 +54,15 @@ export const useSessionBeadsStore = defineStore('beads', {
         else matchesIndices.push(indexPending);
       }
 
+      const prevCord = this.cordFromCurrent(nBack.value);
       for (const i in matchesIndices) pendingCord[i] = prevCord[i];
 
       const currentCord = pendingCord.map((el) =>
         el ? el : (randomFrom(beadPool) as string)
       );
+
       this.cords.push(currentCord);
+      this.matchesCounts.push(matchesCount);
     },
   },
 });
