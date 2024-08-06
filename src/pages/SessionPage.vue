@@ -3,8 +3,18 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from 'pinia';
+import { useSessionBeadsStore } from 'src/stores/SessionBeadsStore';
 import { defineComponent } from 'vue';
 export default defineComponent({
-  // name: 'PageName'
+  setup() {
+    const sessionBeads = useSessionBeadsStore();
+    sessionBeads.makeSessionCords(13);
+    const { matchesCounts, playableCords } = storeToRefs(sessionBeads);
+
+    console.log(playableCords.value);
+
+    return { matchesCounts };
+  },
 });
 </script>
