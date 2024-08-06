@@ -10,7 +10,7 @@
 
     <val-crement
       @crement="(delta:number)=>crementBeads(delta)"
-      :val="beads"
+      :val="beadCount"
       :delta="1"
     >
       Beads:
@@ -22,6 +22,14 @@
       :delta="1"
     >
       nBack:
+    </val-crement>
+
+    <val-crement
+      @crement="(delta:number)=>crementTime(delta)"
+      :val="time"
+      :delta="10"
+    >
+      Time:
     </val-crement>
   </q-page>
 </template>
@@ -35,10 +43,20 @@ export default defineComponent({
   components: { ValCrement },
   setup() {
     const configuration = useConfigurationStore();
-    const { beads, tempo, nBack } = storeToRefs(configuration);
-    const { crementBeads, shiftTempo, crementnBack } = configuration;
+    const { beadCount, tempo, nBack, time } = storeToRefs(configuration);
+    const { crementBeads, shiftTempo, crementnBack, crementTime } =
+      configuration;
 
-    return { beads, tempo, nBack, crementBeads, shiftTempo, crementnBack };
+    return {
+      beadCount,
+      tempo,
+      nBack,
+      time,
+      crementBeads,
+      shiftTempo,
+      crementnBack,
+      crementTime,
+    };
   },
 });
 </script>
