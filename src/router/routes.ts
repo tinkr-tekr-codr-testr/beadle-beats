@@ -11,6 +11,7 @@ const routes: RouteRecordRaw[] = [
       },
 
       { path: 'index', component: () => import('pages/IndexPage.vue') },
+      { path: 'session', component: () => import('pages/SessionPage.vue') },
     ],
   },
 
