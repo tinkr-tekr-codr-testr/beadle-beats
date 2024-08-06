@@ -34,7 +34,7 @@ export const useSessionBeadsStore = defineStore('beads', {
         }
 
         this.cords.push(pendingCord);
-        this.matchesCounts.push(0);
+        this.matchesCounts.push(-1);
       }
 
       return nBack.value;
