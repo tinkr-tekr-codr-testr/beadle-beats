@@ -34,6 +34,11 @@ export const useConfigurationStore = defineStore('configuration', {
     getCordBeats(state) {
       return state.cordBeats;
     },
+
+    derivedCordCount: (state) => {
+      const { tempo, time, cordBeats, interval } = state;
+      return Math.floor((tempo * (time / 60)) / (cordBeats + interval));
+    },
   },
 
   actions: {
