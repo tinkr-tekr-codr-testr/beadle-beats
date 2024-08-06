@@ -53,8 +53,8 @@ export const useConfigurationStore = defineStore('configuration', {
       this.time += delta;
     },
 
-    shiftInterval(sign: number) {
-      this.interval += sign * 4;
+    shiftInterval(delta: number) {
+      this.interval += delta;
     },
 
     crementCordBeats(delta: number) {
