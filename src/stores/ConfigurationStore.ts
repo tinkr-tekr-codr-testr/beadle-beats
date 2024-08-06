@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 export const useConfigurationStore = defineStore('configuration', {
   state: () => ({
     beadCount: 3,
+    cordBeats: 12,
     tempo: 90,
     nBack: 1,
     time: 180,
@@ -29,6 +30,10 @@ export const useConfigurationStore = defineStore('configuration', {
     getInterval(state) {
       return state.interval;
     },
+
+    getCordBeats(state) {
+      return state.cordBeats;
+    },
   },
 
   actions: {
@@ -50,6 +55,10 @@ export const useConfigurationStore = defineStore('configuration', {
 
     shiftInterval(sign: number) {
       this.interval += sign * 4;
+    },
+
+    crementCordBeats(delta: number) {
+      this.cordBeats += delta;
     },
   },
 });
