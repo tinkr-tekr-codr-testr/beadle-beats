@@ -1,0 +1,14 @@
+{
+  "name": "beadle-beats",
+  "version": "0.0.1",
+  "description": "Rhythmic Linear Memory Match",
+  "author": "tinkr-tekr-codr-testr",
+  "private": true,
+  "dependencies": {
+    "@capacitor-community/volume-buttons": "^6.0.1",
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/app": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}
