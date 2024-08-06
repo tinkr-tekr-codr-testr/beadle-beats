@@ -31,6 +31,24 @@
     >
       Time:
     </val-crement>
+
+    <val-crement
+      @crement="(delta:number)=>shiftInterval(delta)"
+      :val="interval"
+      :delta="4"
+    >
+      Interval:
+    </val-crement>
+
+    <val-crement
+      @crement="(delta:number)=>crementCordBeats(delta)"
+      :val="cordBeats"
+      :delta="4"
+    >
+      Cord Beats:
+    </val-crement>
+
+    {{ derivedCordCount }}
   </q-page>
 </template>
 
@@ -43,19 +61,38 @@ export default defineComponent({
   components: { ValCrement },
   setup() {
     const configuration = useConfigurationStore();
-    const { beadCount, tempo, nBack, time } = storeToRefs(configuration);
-    const { crementBeads, shiftTempo, crementnBack, crementTime } =
-      configuration;
+    const {
+      beadCount,
+      tempo,
+      nBack,
+      time,
+      interval,
+      cordBeats,
+      derivedCordCount,
+    } = storeToRefs(configuration);
+    const {
+      crementBeads,
+      shiftTempo,
+      crementnBack,
+      crementTime,
+      shiftInterval,
+      crementCordBeats,
+    } = configuration;
 
     return {
       beadCount,
       tempo,
       nBack,
       time,
+      interval,
+      cordBeats,
       crementBeads,
       shiftTempo,
       crementnBack,
       crementTime,
+      shiftInterval,
+      crementCordBeats,
+      derivedCordCount,
     };
   },
 });
